@@ -35,6 +35,10 @@ export default function Home() {
       setError('Alias cannot contain spaces');
       return;
     }
+    if (alias.includes('/')) {
+      setError('Alias cannot contain slashes');
+      return;
+    }
     
     const res = await fetch('/api/shorten', {
       method: 'POST',
